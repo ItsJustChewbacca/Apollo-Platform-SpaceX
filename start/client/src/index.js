@@ -2,7 +2,13 @@ import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
-  uri: "ItsJustChewbacca-631"
+  cache,
+  link: new HttpLink({
+    uri: 'ItsJustChewbacca-631',
+    headers: {
+      authorization: localStorage.getItem('token'),
+    },
+  })
 });
 
 ReactDOM.render(

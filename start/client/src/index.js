@@ -8,7 +8,11 @@ const client = new ApolloClient({
     headers: {
       authorization: localStorage.getItem('token'),
     },
-  })
+  }),
+	initializers: {
+	isLoggedIn: () => !!localStorage.getItem('token'),
+	cartItems: () => [],
+  },
 });
 
 ReactDOM.render(

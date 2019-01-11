@@ -6,6 +6,7 @@ import Loading from '../components/loading';
 import Header from '../components/header';
 import ActionButton from '../containers/action-button';
 import LaunchDetail from '../components/launch-detail';
+import { LAUNCH_TILE_DATA } from './launches';
 
 export const GET_LAUNCH_DETAILS = gql`
   query LaunchDetails($launchId: ID!) {
@@ -18,28 +19,17 @@ export const GET_LAUNCH_DETAILS = gql`
         name
         type
       }
+      ...LaunchTile
       mission {
         name
         missionPatch
       }
     }
+    ${LAUNCH_TILE_DATA}
   }
 `;
 
-export const LAUNCH_TILE_DATA = gql`
-  fragment LaunchTile on Launch {
-    id
-    isBooked
-    rocket {
-      id
-      name
-    }
-    mission {
-      name
-      missionPatch
-    }
-  }
-`;
+
 
 export default function Launch({ launchId }) {
   return (

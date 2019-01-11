@@ -13,6 +13,7 @@ const GET_LAUNCHES = gql`
       cursor
       hasMore
       launches {
+        ...LaunchTile
         id
         isBooked
         rocket {
@@ -24,6 +25,21 @@ const GET_LAUNCHES = gql`
           missionPatch
         }
       }
+    }
+    ${LAUNCH_TILE_DATA}
+  }
+`;
+export const LAUNCH_TILE_DATA = gql`
+  fragment LaunchTile on Launch {
+    id
+    isBooked
+    rocket {
+      id
+      name
+    }
+    mission {
+      name
+      missionPatch
     }
   }
 `;

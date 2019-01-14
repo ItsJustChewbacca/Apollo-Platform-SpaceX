@@ -10,7 +10,7 @@ const { createStore } = require('./utils');
 const LaunchAPI = require('./datasources/launch');
 const UserAPI = require('./datasources/user');
 
-const internalEngineDemo = require('./engine-demo');
+const internalEngine = require('./engine');
 
 // creates a sequelize connection once. NOT for every request
 const store = createStore();
@@ -44,7 +44,7 @@ const server = new ApolloServer({
   context,
   engine: {
     apiKey: process.env.ENGINE_API_KEY,
-    ...internalEngineDemo,
+    ...internalEngine,
   },
 });
 

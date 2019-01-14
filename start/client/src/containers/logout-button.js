@@ -22,3 +22,9 @@ export default function LogoutButton() {
     </ApolloConsumer>
   );
 }
+
+const StyledButton = styled('button')(menuItemClassName, {
+  background: 'none',
+  border: 'none',
+  padding: 0,
+});
